@@ -1,0 +1,28 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: root
+    password: test
+  sql:
+    init:
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      mode: always
+# Logger Config
+logging:
+  level:
+    com.glinet.mybatisplus.MybatisplusApplicationTests: debug
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      table-prefix: sys_
+      # 配置MyBatis-Plus的主键策略
+      id-type: assign_id
+  # 配置类型别名所对应的包
+  type-aliases-package: com.glinet.mybatisplus.entity
+  # 不再需要这个配置,放心删除,扫描通用枚举
+  type-enums-package: com.glinet.mybatisplus.enums
